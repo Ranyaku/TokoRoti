@@ -1,5 +1,6 @@
-import Home from "./component/Home";
+import Menu from "./component/Menu";
+
 
 export default function App() {
-  return <Home />;
+  return <Menu />;
 }

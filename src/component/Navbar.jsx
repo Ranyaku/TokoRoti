@@ -1,6 +1,6 @@
 import product from "../data/produck";
 
-export default function Navbar() {
+export default function Navbar({total}) {
 return (
     <>
     <header className="bg-[#FFEBD8] ">
@@ -25,7 +25,7 @@ return (
 
     <div className="bg-[#FFF4E9]">
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between text-sm font-medium">
-        <p>{product.length} Produk Ditemukan</p>
+        <p>{total} Produk Ditemukan</p>
 
         <div className="flex items-center gap-2">
             <span>Urutkan</span>
