@@ -1,6 +1,6 @@
 import product from "../data/produck";
 
-export default function Navbar({total}) {
+export default function Navbar({total, cart}) {
 return (
     <>
     <header className="bg-[#FFEBD8] ">
@@ -19,6 +19,8 @@ return (
         <div className="flex gap-4 text-lg">
             <span className="cursor-pointer">👤</span>
             <span className="cursor-pointer">🛒</span>
+            <p> {cart.length} </p>
+        {console.log(cart)}
         </div>
         </div>
     </header>
