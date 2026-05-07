@@ -1,6 +1,5 @@
 import Navbar from "../component/Navbar"
 import Footer from "../component/Footer"
-import product from "../data/produck"
 import { Navigate, useNavigate } from "react-router-dom"
 
 export default function Checkout({cart, setCart, deleteItem, incItem, totalHarga,filtered, category, setCategory}) {
@@ -21,7 +20,7 @@ return (
     </h1>
 
     <button className="text-[#C27C3D] font-bold hover:underline cursor-pointer"
-    onClick={() => navigate("/")}
+    onClick={() => navigate("/menu")}
     >
         Beli rotinya dulu yuk {">"}
     </button>
@@ -66,12 +65,18 @@ return (
         <div className="flex flex-col gap-1">
 
         <button
+        onClick={() => (
+            incItem(item)
+        )}
                 className="w-6 h-6 border rounded hover:bg-gray-100 cursor-pointer"
                 >
                 +
         </button>
 
         <button
+        onClick={() => (
+            deleteItem(item)
+        )}
                 className="w-6 h-6 border rounded hover:bg-gray-100 cursor-pointer"
             >
                 -
