@@ -1,0 +1,42 @@
+export default function Sidebar({setCategory}) {
+return (
+
+    // Sidebar Kategori
+    <div className="w-72 space-y-5">
+    <div className="bg-white border rounded-md p-5">
+        <h2 className="text-xl font-bold mb-4">Kategori</h2>
+
+        <div className="border-t pt-4 space-y-3">
+        <button className="block w-full text-left hover:text-orange-600"
+        onClick={() => setCategory("all")}
+        >
+            Semua 
+        </button>
+        <button className="block w-full text-left hover:text-orange-600"
+        onClick={() => setCategory("roti")}
+        >
+            Roti
+        </button>
+
+        <button className="block w-full text-left hover:text-orange-600"
+        onClick={() => setCategory("kue")}
+        >
+            Kue
+        </button>
+
+        <button className="block w-full text-left hover:text-orange-600"
+        onClick={() => setCategory("donat")}
+        >
+            Donat
+        </button>
+
+        <button className="block w-full text-left hover:text-orange-600"
+        onClick={() => setCategory("minuman")}
+        >
+            Minuman
+        </button>
+        </div>
+    </div>
+    </div>
+);
+}
