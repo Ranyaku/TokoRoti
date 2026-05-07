@@ -1,6 +1,8 @@
 import CartDrop from "./cart";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Navbar({ total, cart, setCart, incItem, totalHarga, deleteItem }) {
+export default function Navbar({ total, cart, setCart, incItem, totalHarga, deleteItem}) {
+  const navigate = useNavigate()
 
   return (
     <>
@@ -13,14 +15,18 @@ export default function Navbar({ total, cart, setCart, incItem, totalHarga, dele
 
           <ul className="hidden md:flex gap-8 font-semibold text-sm text-[#3a2d21]">
             <li className="cursor-pointer hover:text-orange-600">Home</li>
+            <button 
+            onClick={() => navigate("/")}
+            >       
             <li className="cursor-pointer hover:text-orange-600">Menu</li>
+            </button>
             <li className="cursor-pointer hover:text-orange-600">About Us</li>
             <li className="cursor-pointer hover:text-orange-600">Contact Us</li>
           </ul>
 
           {/* 🔥 CART */}
           
-        <CartDrop incItem={incItem} deleteItem={deleteItem} total={totalHarga} cart={cart}/>
+        <CartDrop incItem={incItem} deleteItem={deleteItem} total={totalHarga} cart={cart} navigate={navigate} />
         </div>
       </header>
 

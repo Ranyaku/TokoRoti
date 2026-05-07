@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function CartDrop({cart, setCart, total, incItem, deleteItem}) {
     const [open, setOpen] = useState(false);
-
+    const navigate = useNavigate()
 
 return (
     <>
@@ -68,7 +69,9 @@ return (
 
                 <div className="mt-4 border-t pt-3">
                     <button 
-                    // onClick={()}
+                    onClick={() => (
+                        navigate("/checkout")
+                    )}
                     className="w-full bg-orange-500 text-white py-2 rounded-md hover:opacity-90">
                     Checkout
                     </button>

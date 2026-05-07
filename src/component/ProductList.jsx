@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "../Pages/Menu";
 
 export default function ProductList({filter, setCart, cart}) {
     
