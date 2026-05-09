@@ -1,7 +1,7 @@
 export default function Footer () {
   return (
-    <footer className="w-full border-t mt-16">
-      <div className="max-w-6xl mx-auto px-4 py-10">
+    <footer className="w-full border-t mt-16 bg-[#242424]">
+      <div className="max-w-6xl mx-auto px-4 py-10 text-white ">
         
         <div className="grid md:grid-cols-3 gap-8">
           
@@ -17,10 +17,7 @@ export default function Footer () {
           <div>
             <h3 className="font-semibold mb-2">Menu</h3>
             <ul className="text-sm space-y-1">
-              <li>Home</li>
-              <li>About</li>
               <li>Products</li>
-              <li>Contact</li>
             </ul>
           </div>
 

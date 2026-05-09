@@ -20,7 +20,7 @@ return (
     </h1>
 
     <button className="text-[#C27C3D] font-bold hover:underline cursor-pointer"
-    onClick={() => navigate("/menu")}
+    onClick={() => navigate("/")}
     >
         Beli rotinya dulu yuk {">"}
     </button>

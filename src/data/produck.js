@@ -1,8 +1,13 @@
+import breadImg from "./Img/Bread/Danish-Coklat-Belepotan.jpg"
+import cakeImg from "./Img/cake/Lemon-Tart-15-X-15-Cm.jpeg"
+import donatImg from "./Img/donut/black-jack.jpg"
+import pudding from "./Img/pudding/Panna-Cotta-Cendol-Cup.jpeg"
+
 const product = [
-    {id:1, name:"Roti Kacang", category:"roti", price:7000},
-    {id:2, name:"Kue Keju", category:"kue", price:20000},
-    {id:3, name:"Donat 8 Rasa", category:"donat", price:40000},
-    {id:4, name:"Es Teh Manis Anget Ga Pake Gula", category:"minuman", price:5000}
+    {id:1, name:"Roti Kacang", category:"roti", price:7000, img:breadImg, desc:""} ,
+    {id:2, name:"Kue Keju", category:"kue", price:20000, img:cakeImg},
+    {id:3, name:"Donat 8 Rasa", category:"donat", price:40000, img:donatImg},
+    {id:4, name:"Es Teh Manis Anget Ga Pake Gula", category:"sideMenu", price:5000, img:pudding}
 ]
 
 export default product

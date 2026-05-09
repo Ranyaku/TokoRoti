@@ -8,10 +8,10 @@ export default function Menu({cart, setCart, deleteItem, incItem, totalHarga, to
 return (
     <>
     <div className="min-h-screen">
-    <Navbar total={filtered.length} cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>
+    <Navbar cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>
     <main className="max-w-7xl mx-auto px-1 py-6 flex gap-10">
         <Sidebar setCategory={setCategory}/>
-        <ProductList filter={filtered} setCart={setCart} cart={cart} />
+        <ProductList filter={filtered} setCart={setCart} cart={cart} total={filtered.length} />
     </main>
 
     <Footer />

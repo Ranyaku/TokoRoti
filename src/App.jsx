@@ -50,11 +50,13 @@ const totalHarga = cart.reduce((total, item) => {
     return total + (item.price * item.qty)
 }, 0)
 
+
 return (
     <BrowserRouter>
   <Routes>
     <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} />} />
-    <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} />} />
+    <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} totalHarga={totalHarga} total={filtered} incItem={incItem} deleteItem={deleteItem} />} />
+    <Route path="/product/:id" element={<Deskripsi cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>}/>
     <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} totalHarga={totalHarga} deleteItem={deleteItem} incItem={incItem} filtered={filtered}/>} />
   </Routes>
   </BrowserRouter>

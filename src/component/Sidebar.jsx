@@ -31,9 +31,9 @@ return (
         </button>
 
         <button className="block w-full text-left hover:text-orange-600"
-        onClick={() => setCategory("minuman")}
+        onClick={() => setCategory("sideMenu")}
         >
-            Minuman
+            Side Menu
         </button>
         </div>
     </div>
