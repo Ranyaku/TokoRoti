@@ -4,6 +4,7 @@ import Checkout from "./Pages/co";
 import { useState } from "react";
 import product from "./data/produck";
 import Deskripsi from "./Pages/deskripsi";
+import Login from "./Pages/login";
 
 
 export default function App() {
@@ -58,6 +59,7 @@ return (
     <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} totalHarga={totalHarga} total={filtered} incItem={incItem} deleteItem={deleteItem} />} />
     <Route path="/product/:id" element={<Deskripsi cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>}/>
     <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} totalHarga={totalHarga} deleteItem={deleteItem} incItem={incItem} filtered={filtered}/>} />
+    <Route path="/login" element={<Login cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/> } />
   </Routes>
   </BrowserRouter>
   )

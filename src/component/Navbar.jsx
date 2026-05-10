@@ -26,7 +26,11 @@ export default function Navbar({ total, cart, setCart, incItem, totalHarga, dele
           />
           <img/>
           <ul className="absolute top-10 left-1/2 flex gap-8 font-semibold text-xl ">  
-          <li className="">Menu</li>
+          <button
+          onClick={() => navigate("/")}
+          >
+          <li className="cursor-pointer hover:text-orange-100">Menu</li>
+          </button>
           </ul>
         </div>
 

@@ -2,9 +2,11 @@ import Navbar from "../component/Navbar"
 import Footer from "../component/Footer"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import product from "../data/produck"
+import { useState } from "react"
 
-export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, totalHarga}) {
+export default function Deskripsi ({cart, setCart, total, totalHarga, deleteItem}) {
 
+  const [qty, setQty] = useState(1)
   const {id} = useParams();
   const navigate = useNavigate()
   const item = product.find(item => item.id === Number(id))
@@ -15,7 +17,7 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
         if (exist){
             const update = cart.map(item => {
                 if (item.id === product.id){
-                    return {...item, qty: item.qty + 1}
+                    return {...item, qty: item.qty + product.qty}
                 }
                 return item
             })
@@ -24,6 +26,16 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
             setCart([...cart , {...product, qty: 1}])
         }
     }
+
+    function incItem() {
+      setQty(prev => prev + 1)
+    }
+
+    function decItem() {
+      setQty(prev => prev - 1)
+    }
+
+    const subTotal = qty * item.price
 
     return (
         <>
@@ -105,17 +117,21 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
         {/* QTY */}
         <div className="flex items-center justify-between border rounded-xl px-4 py-3 mb-6">
 
-          <button className="w-8 h-8 rounded-lg border hover:bg-gray-100 cursor-pointer text-lg font-bold">
+          <button className="w-8 h-8 rounded-lg border hover:bg-gray-100 cursor-pointer text-lg font-bold"
+          onClick={decItem}
+          >
             -
           </button>
 
-
+          
           <span className="font-bold text-lg">
-            1
+            {qty}
           </span>
 
 
-          <button className="w-8 h-8 rounded-lg border hover:bg-gray-100 cursor-pointer text-lg font-bold">
+          <button className="w-8 h-8 rounded-lg border hover:bg-gray-100 cursor-pointer text-lg font-bold"
+          onClick={incItem}
+          >
             +
           </button>
 
@@ -131,7 +147,7 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
 
 
           <span className="text-2xl font-black text-[#C27C3D]">
-            Rp. 22.000
+            {subTotal}
           </span>
 
         </div>
@@ -142,7 +158,7 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
 
           <button className="w-full bg-[#C27C3D] hover:opacity-90 transition text-white py-3 rounded-xl font-bold cursor-pointer"
           onClick={() => {
-            addToCart(item)
+            addToCart({...item, qty})
             navigate("/checkout")
           }}
           >
@@ -151,7 +167,7 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
 
 
           <button className="w-full border-2 border-[#C27C3D] text-[#C27C3D] py-3 rounded-xl font-bold hover:bg-[#C27C3D] hover:text-white transition cursor-pointer"
-          onClick={() => addToCart(item)}
+          onClick={() => addToCart({...item, qty})}
           >
             + Keranjang
           </button>
@@ -161,9 +177,9 @@ export default function Deskripsi ({cart, setCart, deleteItem, incItem, total, t
 
         {/* EXTRA */}
         <div className="border-t mt-8 pt-5 space-y-3 text-sm text-gray-500">
-          <p>🔥 Fresh dipanggang hari ini</p>
-          <p>🚚 Pengiriman cepat</p>
-          <p>🧈 Menggunakan butter premium</p>
+          <p>🔥 dipanggang hari ini</p>
+          <p>🚚 a aaaa a a a a a</p>
+          <p>🧈 Menggunakan butter mentega</p>
         </div>
 
       </div>
