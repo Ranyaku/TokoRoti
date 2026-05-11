@@ -23,16 +23,21 @@ export default function Deskripsi ({cart, setCart, total, totalHarga, deleteItem
             })
             setCart(update)
         }else {
-            setCart([...cart , {...product, qty: 1}])
+            setCart([...cart, product])
         }
     }
 
-    function incItem() {
+    function incItem () {
       setQty(prev => prev + 1)
-    }
+    } 
+    
 
     function decItem() {
-      setQty(prev => prev - 1)
+      if (qty <= 1) {
+        return
+      } else {
+        setQty(prev => prev - 1)
+      }
     }
 
     const subTotal = qty * item.price

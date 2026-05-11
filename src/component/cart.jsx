@@ -8,7 +8,9 @@ export default function CartDrop({cart, total, incItem, deleteItem}) {
 return (
     <>
     <div className="flex gap-4 text-lg items-center relative">
-            <span className="cursor-pointer">👤</span>
+            <span className="cursor-pointer"
+            onClick={() => navigate("/login")}
+            >👤</span>
 
         <div className="relative"
         onMouseEnter={() => setOpen(true)}
