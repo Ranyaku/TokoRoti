@@ -1,8 +1,43 @@
 import { useState } from "react"
+import user from "../user/user";
 import Footer from "../component/Footer";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Login({cart, setCart, filtered, incItem, deleteItem, totalHarga}) {
+export default function Login({cart, setCart, filtered, incItem, deleteItem, totalHarga,setRole, role}) {
     const [login, setLogin] = useState(true)
+    const [error , setError] = useState(null)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+
+    function checkLog (user) {
+      const exist = user.find( item => 
+        item.username === username &&
+        item.password === password
+      )
+
+      if (exist) {
+        setRole(exist.role)
+
+        if (exist.role === "admin") {
+          navigate("/admin")
+        }
+
+        if (exist.role === "kasir") {
+          navigate("/kasir")
+        }
+
+        setError(null)
+
+      }else {
+        setError("Username Atau Password Salah!!!")
+      }
+    }
+
+    function handleLogin(x) {
+      x.preventDefault()
+      checkLog(user)
+    }
 
     return (
         <>
@@ -13,7 +48,9 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
       Login/Sign In
     </h1>
 
-    <form className="flex flex-col gap-5">
+    <form className="flex flex-col gap-5"
+    onSubmit={handleLogin}
+    >
       
       {/* EMAIL */}
       <div className="flex flex-col gap-2">
@@ -35,6 +72,8 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
             focus:border-blue-500
             bg-white
           "
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
 
@@ -58,45 +97,19 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
             focus:border-blue-500
             bg-white
           "
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
 
-      {/* CONFIRM PASSWORD */}
-      {!login && (
+      {error && (
+        <span
+        className="text-red-500"
+        >{error}</span>
+      )}
 
-        <div className="flex flex-col gap-2">
-        <label className="font-semibold text-gray-700">
-          Konfirmasi Password
-        </label>
-
-        <input
-          type="password"
-          placeholder="konfirmasi password"
-          className="
-            w-full
-            h-11
-            px-4
-            rounded-xl
-            border
-            border-gray-300
-            outline-none
-            focus:border-blue-500
-            bg-white
-            "
-            />
-      </div>
-          )}
-
-          
-          <button
-          className="cursor-pointer"
-          type="button"
-          onClick={() => setLogin(!login)}
-          >
-            <span>{login ? "Belum Punya Akun?" : "Sudah Punya Akun?"}</span>
-          </button>
-      {/* BUTTON */}
       <button
+      type="submit"
         className="
           mt-4
           h-11
@@ -109,7 +122,7 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
           cursor-pointer
         "
       >
-        {login ? "Login" : "Sign Up"}
+        login
       </button>
 
     </form>
