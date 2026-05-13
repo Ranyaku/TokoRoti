@@ -1,8 +1,8 @@
 import { useState } from "react"
-import Navbar from "../component/Navbar"
+import Footer from "../component/Footer";
 
 export default function Login({cart, setCart, filtered, incItem, deleteItem, totalHarga}) {
-    
+    const [login, setLogin] = useState(true)
 
     return (
         <>
@@ -14,7 +14,7 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
     </h1>
 
     <form className="flex flex-col gap-5">
-
+      
       {/* EMAIL */}
       <div className="flex flex-col gap-2">
         <label className="font-semibold text-gray-700">
@@ -62,7 +62,9 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
       </div>
 
       {/* CONFIRM PASSWORD */}
-      <div className="flex flex-col gap-2">
+      {!login && (
+
+        <div className="flex flex-col gap-2">
         <label className="font-semibold text-gray-700">
           Konfirmasi Password
         </label>
@@ -80,10 +82,19 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
             outline-none
             focus:border-blue-500
             bg-white
-          "
-        />
+            "
+            />
       </div>
+          )}
 
+          
+          <button
+          className="cursor-pointer"
+          type="button"
+          onClick={() => setLogin(!login)}
+          >
+            <span>{login ? "Belum Punya Akun?" : "Sudah Punya Akun?"}</span>
+          </button>
       {/* BUTTON */}
       <button
         className="
@@ -98,12 +109,13 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
           cursor-pointer
         "
       >
-        Sign Up
+        {login ? "Login" : "Sign Up"}
       </button>
 
     </form>
   </div>
 </div>
+<Footer />
         </>
     )
 }
