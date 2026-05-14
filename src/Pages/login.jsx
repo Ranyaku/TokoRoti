@@ -26,7 +26,8 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
         if (exist.role === "kasir") {
           navigate("/kasir")
         }
-
+        console.log("LOGIN BERHASIL")
+        console.log(exist.role)
         setError(null)
 
       }else {

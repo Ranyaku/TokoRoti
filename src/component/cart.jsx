@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import user from "../user/user";
 
 export default function CartDrop({cart, total, incItem, deleteItem}) {
     const [open, setOpen] = useState(false);
@@ -8,9 +9,11 @@ export default function CartDrop({cart, total, incItem, deleteItem}) {
 return (
     <>
     <div className="flex gap-4 text-lg items-center relative">
-            <span className="cursor-pointer"
-            onClick={() => navigate("/login")}
-            >👤</span>
+            {role !== "guest" && (
+                <span className="cursor-pointer"
+                onClick={() => navigate("/login")}
+                >👤 {user.role}</span>
+            )}
 
         <div className="relative"
         onMouseEnter={() => setOpen(true)}
