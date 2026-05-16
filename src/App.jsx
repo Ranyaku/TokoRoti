@@ -8,6 +8,7 @@ import Login from "./Pages/login";
 import user from "./user/user";
 import Admin from "./admin/dashboard";
 import Kasir from "./kasir/dashboard";
+import AdminDashboard from "./admin/dash";
 
 
 export default function App() {
@@ -60,8 +61,8 @@ return (
     <BrowserRouter>
   <Routes>
     
-    <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} />} />
-    <Route path="/admin" element={<Admin deleteItem={deleteItem} incItem={incItem}/>} />
+    <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} role={role} />} />
+    <Route path="/admin" element={<AdminDashboard deleteItem={deleteItem} incItem={incItem}/>} />
     <Route path="/kasir" element={<Kasir deleteItem={deleteItem} incItem={incItem}/>} />
     <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} totalHarga={totalHarga} total={filtered} incItem={incItem} deleteItem={deleteItem} />} />
     <Route path="/product/:id" element={<Deskripsi cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>}/>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import user from "../user/user";
 
-export default function CartDrop({cart, total, incItem, deleteItem}) {
+export default function CartDrop({cart, total, incItem, deleteItem, role}) {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate()
 
