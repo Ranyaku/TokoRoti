@@ -8,13 +8,25 @@ export default function CartDrop({cart, total, incItem, deleteItem, role}) {
 
 return (
     <>
+    {role === "admin" && (
+            <p
+            onClick={() => navigate("/admin")}
+            className="cursor-pointer px-152 py-1 absolute rounded-md text-sm font-bold transition"
+            >Dashboard</p>
+        )}
     <div className="flex gap-4 text-lg items-center relative">
             {role !== "guest" && (
                 <span className="cursor-pointer"
                 onClick={() => navigate("/login")}
-                >👤 {user.role}</span>
+                >👤 {role.role}</span>
             )}
+            
+    <div className="flex gap-4 text-lg items-center relative">
+                <span className="cursor-pointer"
+                onClick={() => navigate("/login")}
+                >👤 {role.role}</span>
 
+            
         <div className="relative"
         onMouseEnter={() => setOpen(true)}
         >
@@ -86,6 +98,7 @@ return (
             )}
             </div>
         </div>
+    </div>
     </>
 )
 

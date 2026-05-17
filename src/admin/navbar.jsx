@@ -7,10 +7,10 @@ export default function Admin() {
   const location = useLocation()
 
   const navLink = (path) => {
-    return location.pathname === path
-      ? "bg-[#242424] text-white"
-      : "text-white hover:bg-[#242424] hover:text-white"
-  }
+  return location.pathname === path
+    ? "bg-white text-black"
+    : "text-white hover:bg-white hover:text-black"
+}
 
   return (
     <nav
@@ -50,6 +50,8 @@ export default function Admin() {
               text-sm
               font-bold
               transition
+              hover:bg-white
+              hover:text-black
               ${navLink("/admin")}
             `}
           >
@@ -65,6 +67,8 @@ export default function Admin() {
               text-sm
               font-bold
               transition
+              hover:bg-white
+              hover:text-black
               ${navLink("/admin/menu")}
             `}
           >
@@ -80,6 +84,8 @@ export default function Admin() {
               text-sm
               font-bold
               transition
+              hover:bg-white
+              hover:text-black
               ${navLink("/admin/staff")}
             `}
           >
@@ -95,6 +101,8 @@ export default function Admin() {
               text-sm
               font-bold
               transition
+              hover:bg-white
+              hover:text-black
               ${navLink("/admin/reports")}
             `}
           >
@@ -110,6 +118,8 @@ export default function Admin() {
               text-sm
               font-bold
               transition
+              hover:bg-white
+              hover:text-black
               ${navLink("/")}
             `}
           >

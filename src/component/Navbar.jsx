@@ -13,8 +13,6 @@ export default function Navbar({ total, cart, setCart, incItem, totalHarga, dele
           <h1 className="text-2xl font-bold tracking-wide ml-[10%]">
             TOKO WIBU
           </h1>
-
-          
           
         <CartDrop incItem={incItem} deleteItem={deleteItem} total={totalHarga} cart={cart} navigate={navigate} role={role} />
         </div>

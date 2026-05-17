@@ -1,6 +1,11 @@
-import Admin from "./dashboard"
+import BestSeller from "./best"
+import Admin from "./navbar"
+import Sales from "./sales"
+import Staff from "./staff"
+import Stock from "./stock"
 
 export default function AdminDashboard() {
+
   return (
     <div className="min-h-screen bg-[#ececec]">
 
@@ -15,72 +20,20 @@ export default function AdminDashboard() {
         "
       >
 
-        {/* TOP CARDS */}
-        <div
-          className="
-            grid
-            grid-cols-3
-            gap-6
-          "
-        >
+  <div className="space-y-6">
 
-          <div
-            className="
-              h-40
-              bg-[#242424]
-              rounded-2xl
-              p-5
-              text-white
-              font-bold
-            "
-          >
-            PENJUALAN HARIAN
-          </div>
+  <div className="grid grid-cols-3 gap-6 items-start">
+    <Sales />
+    <Stock />
+    <BestSeller />
+  </div>
 
-          <div
-            className="
-              h-40
-              bg-[#242424]
-              rounded-2xl
-              p-5
-              text-white
-              font-bold
-            "
-          >
-            STOCK
-          </div>
+  <Staff />
 
-          <div
-            className="
-              h-40
-              bg-[#242424]
-              rounded-2xl
-              p-5
-              text-white
-              font-bold
-            "
-          >
-            BEST SELLER
-          </div>
+</div>
+
 
         </div>
-
-        {/* BOTTOM */}
-        <div
-          className="
-            mt-8
-            h-[350px]
-            bg-[#242424]
-            rounded-2xl
-            p-5
-            text-white
-            font-bold
-          "
-        >
-          ACTIVE STAFF
-        </div>
-
       </div>
-    </div>
   )
 }

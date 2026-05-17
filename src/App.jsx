@@ -6,7 +6,7 @@ import product from "./data/produck";
 import Deskripsi from "./Pages/deskripsi";
 import Login from "./Pages/login";
 import user from "./user/user";
-import Admin from "./admin/dashboard";
+import Admin from "./admin/navbar";
 import Kasir from "./kasir/dashboard";
 import AdminDashboard from "./admin/dash";
 
