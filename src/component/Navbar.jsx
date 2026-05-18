@@ -2,7 +2,7 @@ import CartDrop from "./cart";
 import { Navigate, useNavigate } from "react-router-dom";
 import headerImg from "../data/Img/header-bg.jpeg"
 
-export default function Navbar({ total, cart, setCart, incItem, totalHarga, deleteItem, role}) {
+export default function Navbar({ total, cart, setCart, incItem, totalHarga, deleteItem, role, setRole}) {
   const navigate = useNavigate()
 
   return (
@@ -14,7 +14,7 @@ export default function Navbar({ total, cart, setCart, incItem, totalHarga, dele
             TOKO WIBU
           </h1>
           
-        <CartDrop incItem={incItem} deleteItem={deleteItem} total={totalHarga} cart={cart} navigate={navigate} role={role} />
+        <CartDrop incItem={incItem} deleteItem={deleteItem} total={totalHarga} cart={cart} navigate={navigate} role={role}setRole={setRole}/>
         </div>
 
         <div className="w-full h-[300px] overflow-hidden relative text-white">

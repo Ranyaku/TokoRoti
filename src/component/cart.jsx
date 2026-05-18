@@ -2,30 +2,43 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import user from "../user/user";
 
-export default function CartDrop({cart, total, incItem, deleteItem, role}) {
+export default function CartDrop({cart, total, incItem, deleteItem, role, setRole}) {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate()
 
 return (
     <>
-    {role === "admin" && (
-            <p
-            onClick={() => navigate("/admin")}
-            className="cursor-pointer px-152 py-1 absolute rounded-md text-sm font-bold transition"
-            >Dashboard</p>
-        )}
-    <div className="flex gap-4 text-lg items-center relative">
-            {role !== "guest" && (
-                <span className="cursor-pointer"
-                onClick={() => navigate("/login")}
-                >👤 {role.role}</span>
-            )}
+{role === "Admin" && (
+        <p
+        onClick={() => navigate("/admin")}
+        className="cursor-pointer px-152 py-1 absolute rounded-md text-sm font-bold transition"
+        >Dashboard</p>
+    )}
             
-    <div className="flex gap-4 text-lg items-center relative">
-                <span className="cursor-pointer"
-                onClick={() => navigate("/login")}
-                >👤 {role.role}</span>
+<div className="flex gap-4 text-lg items-center relative">
+        <span className="cursor-pointer"
+        onClick={() => navigate("/login")}
+        >👤</span>
 
+<div className="flex gap-4 items-center relative text-md">
+        {role !== "guest" && (
+        <span className="cursor-pointer"
+        onClick={() => navigate("/login")}
+        >{role}</span>
+    )}
+
+{role  === "Admin" && (
+    <button
+    type="button"
+    className="px-3 py-1 rounded-md text-red-500 font-bold text-md transition hover:bg-[#242424]  cursor-pointer"
+    onClick={() => {
+        setRole("guest")
+        navigate("/")
+    }}
+    >
+        LOGOUT
+        </button>
+        )}
             
         <div className="relative"
         onMouseEnter={() => setOpen(true)}

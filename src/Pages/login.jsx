@@ -19,11 +19,11 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
       if (exist) {
         setRole(exist.role)
 
-        if (exist.role === "admin") {
+        if (exist.role === "Admin") {
           navigate("/admin")
         }
 
-        if (exist.role === "kasir") {
+        if (exist.role === "Kasir") {
           navigate("/kasir")
         }
         console.log("LOGIN BERHASIL")
@@ -111,16 +111,7 @@ export default function Login({cart, setCart, filtered, incItem, deleteItem, tot
 
       <button
       type="submit"
-        className="
-          mt-4
-          h-11
-          rounded-xl
-          bg-gray-600
-          hover:bg-gray-700
-          transition
-          text-white
-          font-bold
-          cursor-pointer
+        className="mt-4 h-11 rounded-xl bg-gray-600 hover:bg-gray-700 transition text-white font-bold cursor-pointer
         "
       >
         login

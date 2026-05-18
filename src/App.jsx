@@ -9,6 +9,7 @@ import user from "./user/user";
 import Admin from "./admin/navbar";
 import Kasir from "./kasir/dashboard";
 import AdminDashboard from "./admin/dash";
+import Editmenu from "./admin/menuEdit";
 
 
 export default function App() {
@@ -60,14 +61,14 @@ const totalHarga = cart.reduce((total, item) => {
 return (
     <BrowserRouter>
   <Routes>
-    
-    <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} role={role} />} />
-    <Route path="/admin" element={<AdminDashboard deleteItem={deleteItem} incItem={incItem}/>} />
+    <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} role={role} setRole={setRole} />} />
+    <Route path="/admin" element={<AdminDashboard deleteItem={deleteItem} incItem={incItem} role={role} setRole={setRole} />} />
     <Route path="/kasir" element={<Kasir deleteItem={deleteItem} incItem={incItem}/>} />
     <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} totalHarga={totalHarga} total={filtered} incItem={incItem} deleteItem={deleteItem} />} />
     <Route path="/product/:id" element={<Deskripsi cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>}/>
     <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} totalHarga={totalHarga} deleteItem={deleteItem} incItem={incItem} filtered={filtered}/>} />
     <Route path="/login" element={<Login role={role}  setRole={setRole} cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/> } />
+    <Route path="/admin/edit" element={<Editmenu />} />
   </Routes>
   </BrowserRouter>
   )

@@ -4,12 +4,12 @@ import Sales from "./sales"
 import Staff from "./staff"
 import Stock from "./stock"
 
-export default function AdminDashboard() {
+export default function AdminDashboard({role, setRole}) {
 
   return (
     <div className="min-h-screen bg-[#ececec]">
 
-      <Admin />
+      <Admin role={role} setRole={setRole} />
 
       <div
         className="
