@@ -15,12 +15,12 @@ return (
         >Dashboard</p>
     )}
             
-<div className="flex gap-4 text-lg items-center relative">
+<div className="flex gap-4 text-md items-center relative">
         <span className="cursor-pointer"
         onClick={() => navigate("/login")}
         >👤</span>
 
-<div className="flex gap-4 items-center relative text-md">
+<div className="flex gap-4 items-center relative text-sm font-bold">
         {role !== "guest" && (
         <span className="cursor-pointer"
         onClick={() => navigate("/login")}

@@ -6,30 +6,51 @@ import Admin from "./navbar"
 export default function Editmenu() {
 
     const [activeTab, setActiveTab] = useState("product")
+    const [product, setProduct] = useState(null)
     const navigate = useNavigate()
-    const products = [
+    const [products, setProducts] = useState([
     {
       id: 1,
       name: "Croissant",
       price: 20000,
       stock: 12,
-      category: "Pastry"
+      category: "Pastry",
+      description:""
     },
     {
       id: 2,
       name: "Chocolate Bread",
       price: 15000,
       stock: 5,
-      category: "Sweet Bread"
+      category: "Sweet Bread",
+      description:""
     },
     {
       id: 3,
       name: "Cheese Bun",
       price: 18000,
       stock: 2,
-      category: "Bread"
+      category: "Bread",
+      description:""
     }
-]
+])
+
+function saveData() {
+  const updated = products.map(item => {
+    if (item.id === product.id){
+      return product
+    }
+    
+    return item
+  })
+  setProducts(updated)
+}
+
+function deleted(id) {
+  const deleteItem = products.filter(item => item.id !== id)
+
+  setProducts(deleteItem)
+}
 
 return (
     <div className="min-h-screen bg-[#ececec] text-[#242424]">
@@ -116,8 +137,14 @@ return (
                   {/* ACTION */}
                   <div className="flex gap-3 mt-5">
 
-                    <button className="flex-1 h-10 rounded-xl bg-[#242424] text-white font-bold flex items-center justify-center gap-2 hover:opacity-90 transition cursor-pointer">
-                      <Pencil size={18} />
+                    <button className="flex-1 h-10 rounded-xl bg-[#242424] text-white font-bold flex items-center justify-center gap-2 hover:opacity-90 transition cursor-pointer"
+                      onClick={() => {
+                        setProduct(item)
+                        console.log(item)
+                      }}
+                      >
+                      <Pencil size={18} 
+                      />
                       Edit
                     </button>
 
@@ -185,6 +212,140 @@ return (
 
       </div>
 
+{/* Edit Data Menu*/}
+{product && (
+
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+    <div className="w-[500px] bg-white rounded-2xl p-6">
+
+      {/* HEADER */}
+      <div className="flex items-center justify-between mb-6">
+
+        <h1 className="text-2xl font-bold text-[#242424]">
+          Edit Product
+        </h1>
+
+        <button
+          onClick={() => setProduct(null)}
+          className="text-2xl font-bold text-gray-500 hover:text-black cursor-pointer"
+        >
+          ×
+        </button>
+
+      </div>
+
+      {/* FORM */}
+      <div className="flex flex-col gap-5">
+
+        {/* PRODUCT NAME */}
+        <div className="flex flex-col gap-2">
+
+          <label className="font-bold">
+            Product Name
+          </label>
+
+          <input
+            type="text"
+            value={product.name}
+            className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-[#242424]"
+            onChange={(e) => 
+              setProduct({
+              ...product,
+              name: e.target.value})}
+          />
+
+        </div>
+
+        {/* PRICE */}
+        <div className="flex flex-col gap-2">
+
+          <label className="font-bold">
+            Price
+          </label>
+
+          <input
+            type="number"
+            value={product.price}
+            className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-[#242424]"
+            onChange={(e) => 
+              setProduct({
+              ...product,
+              price: e.target.value})}
+          />
+
+        </div>
+
+        {/* CATEGORY */}
+        <div className="flex flex-col gap-2">
+
+          <label className="font-bold">
+            Category
+          </label>
+
+          <input
+            type="text"
+            value={product.category}
+            className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-[#242424]"
+            onChange={(e) => 
+              setProduct({
+              ...product,
+              category: e.target.value})}
+          />
+
+        </div>
+
+        {/* DESCRIPTION */}
+        <div className="flex flex-col gap-2">
+
+          <label className="font-bold">
+            Description
+          </label>
+
+          <textarea
+            value={product.description}
+            className="w-full h-32 border border-gray-300 rounded-xl p-4 outline-none focus:border-[#242424] resize-none"
+            onChange={(e) => 
+              setProduct({
+              ...product,
+              description: e.target.value})}
+          />
+
+        </div>
+
+        {/* BUTTON */}
+        <div className="flex gap-3 mt-4">
+
+          <button
+            onClick={() => {
+              setProduct(null)
+              deleted(item.id)
+            }}
+            className="flex-1 h-11 rounded-xl border border-gray-300 font-bold hover:bg-gray-100 transition cursor-pointer"
+          >
+            Cancel
+          </button>
+
+          <button className="flex-1 h-11 rounded-xl bg-[#242424] text-white font-bold hover:opacity-90 transition cursor-pointer"
+          onClick={() => {
+            saveData()
+            setProduct(null)
+          }}
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
+
+  </div>
+
+)}
+    </div>
+
+    
   )
 }

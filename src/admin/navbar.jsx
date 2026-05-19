@@ -66,7 +66,7 @@ export default function Admin({role, setRole}) {
 
           <Link
             to="/"
-            className={` px-3py-1 rounded-md text-sm font-bold transition  hover:bg-white hover:text-black
+            className={` px-3 py-1 rounded-md text-sm font-bold transition  hover:bg-white hover:text-black
             ${navLink("/")}
             `}
           >
