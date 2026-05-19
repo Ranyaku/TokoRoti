@@ -1,37 +1,35 @@
 export default function Staff() {
-    const activeStaff = [
-      {
-        name: "John",
-        role: "Cashier"
-      },
-      {
-        name: "Sarah",
-        role: "Baker"
-      },
-      {
-        name: "Mike",
-        role: "Manager"
-      }
-    ]
-    
-    return (
-        <div
-  className="
+  const activeStaff = [
+    {
+      name: "John",
+      role: "Cashier",
+    },
+    {
+      name: "Sarah",
+      role: "Baker",
+    },
+    {
+      name: "Mike",
+      role: "Manager",
+    },
+  ]
+
+  return (
+    <div
+      className="
     bg-[#242424]
     rounded-2xl
     p-5
     text-white
   "
->
-  <h2 className="text-lg font-bold mb-4">
-    ACTIVE STAFF
-  </h2>
+    >
+      <h2 className="text-lg font-bold mb-4">ACTIVE STAFF</h2>
 
-  <div className="space-y-3">
-    {activeStaff.map((staff, index) => (
-      <div
-        key={index}
-        className="
+      <div className="space-y-3">
+        {activeStaff.map((staff, index) => (
+          <div
+            key={index}
+            className="
           flex
           items-center
           justify-between
@@ -40,11 +38,10 @@ export default function Staff() {
           px-4
           py-3
         "
-      >
-        <div className="flex items-center gap-3">
-          
-          <div
-            className="
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="
               w-10
               h-10
               rounded-full
@@ -55,23 +52,19 @@ export default function Staff() {
               justify-center
               font-bold
             "
-          >
-            {staff.name.charAt(0)}
-          </div>
+              >
+                {staff.name.charAt(0)}
+              </div>
 
-          <div>
-            <p className="font-semibold">
-              {staff.name}
-            </p>
+              <div>
+                <p className="font-semibold">{staff.name}</p>
 
-            <p className="text-sm text-gray-400">
-              {staff.role}
-            </p>
-          </div>
-        </div>
+                <p className="text-sm text-gray-400">{staff.role}</p>
+              </div>
+            </div>
 
-        <span
-          className="
+            <span
+              className="
             bg-green-500
             text-white
             text-xs
@@ -79,12 +72,12 @@ export default function Staff() {
             py-1
             rounded-md
           "
-        >
-          ACTIVE
-        </span>
+            >
+              ACTIVE
+            </span>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-    )
+    </div>
+  )
 }

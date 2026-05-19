@@ -10,12 +10,14 @@ import Admin from "./admin/navbar";
 import Kasir from "./kasir/dashboard";
 import AdminDashboard from "./admin/dash";
 import Editmenu from "./admin/menuEdit";
-
+import Payment from "./Pages/payment";
+import Receipt from "./Pages/receipt";
 
 export default function App() {
     const [cart, setCart] = useState([]);
     const [category, setCategory] = useState("all");
     const [role, setRole] = useState("guest")
+    const [receipt, setReceipt] = useState([])
 
     const filtered = 
     category === "all"
@@ -23,7 +25,7 @@ export default function App() {
         : product.filter(item => item.category === category)
 
 
-    function deleteItem(product) {
+function deleteItem(product) {
     const exist = cart.find(item => item.id === product.id)
 
     if (exist.qty === 1) {
@@ -61,14 +63,23 @@ const totalHarga = cart.reduce((total, item) => {
 return (
     <BrowserRouter>
   <Routes>
+
+    {/* Guest Route */}
     <Route path="/" element={<Menu cart={cart} setCart={setCart} deleteItem={deleteItem} incItem={incItem} totalHarga={totalHarga} filtered={filtered} setCategory={setCategory} role={role} setRole={setRole} />} />
-    <Route path="/admin" element={<AdminDashboard deleteItem={deleteItem} incItem={incItem} role={role} setRole={setRole} />} />
-    <Route path="/kasir" element={<Kasir deleteItem={deleteItem} incItem={incItem}/>} />
     <Route path="/deskripsi" element={<Deskripsi setCart={setCart} cart={cart} totalHarga={totalHarga} total={filtered} incItem={incItem} deleteItem={deleteItem} />} />
     <Route path="/product/:id" element={<Deskripsi cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/>}/>
     <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} totalHarga={totalHarga} deleteItem={deleteItem} incItem={incItem} filtered={filtered}/>} />
     <Route path="/login" element={<Login role={role}  setRole={setRole} cart={cart} setCart={setCart} incItem={incItem} deleteItem={deleteItem} totalHarga={totalHarga}/> } />
-    <Route path="/admin/edit" element={<Editmenu />} />
+    <Route path="/payment" element={<Payment cart={cart} totalHarga={totalHarga} receipt={receipt} setReceipt={setReceipt} setCart={setCart} />} />
+    <Route path="/receipt" element={<Receipt receipt={receipt} setReceipt={setReceipt} />} />
+
+    {/* admin Route */}
+    <Route path="/admin" element={<AdminDashboard deleteItem={deleteItem} incItem={incItem} role={role} setRole={setRole} />} />
+    <Route path="/admin/edit" element={<Editmenu setRole={setRole}/>} />
+
+    {/* kasir Route */}
+    <Route path="/kasir" element={<Kasir deleteItem={deleteItem} incItem={incItem}/>} />
+
   </Routes>
   </BrowserRouter>
   )
